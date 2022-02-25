@@ -15,7 +15,14 @@
     >
       <el-table-column sortable align="center" label="Title" width="250">
         <template slot-scope="scope">
-          <el-popover placement="top-start" trigger="hover" :disabled="scope.row.wixTitle.length <= 10">
+          <el-link :href="scope.row.wixLink" v-if="scope.row.wixType === 200" target="_blank" class="buttonText"  type="primary" :underline="false">
+            <el-popover placement="top-start" trigger="hover" :disabled="scope.row.wixTitle.length <= 10">
+                <div>{{ scope.row.wixTitle }}</div>
+                <span slot="reference" v-if="scope.row.wixTitle.length <= 30">{{scope.row.wixTitle}}</span>
+                <span slot="reference" v-if="scope.row.wixTitle.length > 30">{{scope.row.wixTitle.substr(0, 30) + "..."}}</span>
+            </el-popover>
+          </el-link>
+          <el-popover placement="top-start" v-if="scope.row.wixType === 100" trigger="hover" :disabled="scope.row.wixTitle.length <= 10">
             <div>{{ scope.row.wixTitle }}</div>
             <span slot="reference" v-if="scope.row.wixTitle.length <= 30">{{scope.row.wixTitle}}</span>
             <span slot="reference" v-if="scope.row.wixTitle.length > 30">{{scope.row.wixTitle.substr(0, 30) + "..."}}</span>
@@ -26,7 +33,7 @@
       <el-table-column prop="wixAuthor" label="Author" sortable width="180" />
       <el-table-column prop="wixTypesetting" label="Editor" sortable width="180" />
       <el-table-column prop="wixPublishing" label="Publisher" sortable width="180" />
-      <el-table-column prop="wixType" label="Type" sortable width="80">
+      <el-table-column prop="wixType" label="Source Type" sortable width="180">
         <template slot-scope="scope">
           {{ scope.row.wixType | wixTypeFilter}}
         </template>
@@ -89,7 +96,7 @@
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="Type" prop="wixType">
+            <el-form-item label="Source Type" prop="wixType">
               <el-radio-group v-model="temp.wixType">
                 <el-radio :label="item.key" v-for="item in wixTypeList">{{item.value}}</el-radio>
               </el-radio-group>
@@ -145,7 +152,7 @@
 import { wixGet, wixFindList, wixCreate, wixUpdate, wixDelete } from '@/api/wix'
 import Pagination from '@/components/Pagination'
 
-const wixTypeMap = [{key:100,value:'Paper'}, {key:200,value:'Link'}]
+const wixTypeMap = [{key:100,value:'Online Sources'}, {key:200,value:'Printed Sources'}]
 
 export default {
   name: 'WixFile',
@@ -200,7 +207,6 @@ export default {
     }
   },
   created() {
-
     this.loadListPager()
   },
   methods: {

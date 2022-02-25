@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var wixTypeMap = [{key:100,value:'Paper'}, {key:200,value:'Link'}]
+  var wixTypeMap = [{key:100,value:'Online Sources'}, {key:200,value:'Printed Sources'}]
   var tableData = tableList;
 
   var table = $("#example").DataTable({
@@ -61,21 +61,29 @@ $(document).ready(function () {
     table.draw();
   }
 
-  var html =  '  <label><input type="radio" name="wixType" value="0" checked="checked"/>ALL</label>\n' +
-              '  <label><input type="radio" name="wixType" value="100"/>Paper</label>\n' +
-              '  <label><input type="radio" name="wixType" value="200"/>Link</label>\n';
-  $("div.toolbar").html(html);
+  var html =  '  <label><input type="radio" name="wixType" id="wixType-0" value="0" checked="checked"/>ALL</label>\n' +
+              '  <label><input type="radio" name="wixType" id="wixType-100" value="100"/>Online Sources</label>\n' +
+              '  <label><input type="radio" name="wixType" id="wixType-200" value="200"/>Printed Sources</label>\n';
+  $("div.toolbar").html(html)
 
   $('.toolbar input[type="radio"]').on('click', function(e) {
     reloadDataTable($(this).val())
-  });
-
+  })
 
   //对行双击添加监听事件
   $("#example tbody").on("dblclick", "tr", function () {
     var row = JSON.parse($(this).attr("data").replace(/\'/g,"\""));
+
+    var wixType = ''
+    wixTypeMap.forEach(item => {
+      if(item.key === row.wixType){
+        wixType = item.value
+      }
+    })
+
     $("#wixTitle").html(row.wixTitle ? row.wixTitle: "");
     $("#wixAuthor").html(row.wixAuthor ? row.wixAuthor: "");
+    $("#wixType").html(wixType ? wixType: "");
     $("#wixTypesetting").html(row.wixTypesetting ? row.wixTypesetting: "");
     $("#wixPublishing").html(row.wixPublishing ? row.wixPublishing: "");
     $("#wixLink").html(row.wixLink ? row.wixLink: "");
@@ -86,7 +94,11 @@ $(document).ready(function () {
   });
 
   var url = new URL(window.location.href);
-  reloadDataTable(url.searchParams.get("wixType"))
+  var wixType = url.searchParams.get("wixType");
+  reloadDataTable(wixType)
+  if(wixType != null){
+    $("#wixType-" + wixType).attr('checked', 'checked');
+  }
 
 });
 
