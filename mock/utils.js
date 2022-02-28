@@ -150,7 +150,7 @@ function setTableBody(rows){
     '    #example_filter input {width: 500px;} \n'+
     '  </style> \n'+
     '</head> \n'+
-    '<body style="width: 1920px"> \n'+
+    '<body > \n'+
     '<table id="example" class="display" style="width:100%"> \n'+
     '  <thead> \n'+
     '    <tr> \n'+
