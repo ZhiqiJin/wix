@@ -7,25 +7,30 @@
     </div>
 
     <el-table
-      :key="tableKey" v-loading="tableListLoading" :data="tableList"
+      :key="tableKey"
+      v-loading="tableListLoading"
+      :data="tableList"
       :header-cell-style="{background:'#eef1f6',color:'#606266'}"
       :default-sort="{prop: 'lastUpdateDateTime', order: 'descending'}"
-      border fit highlight-current-row style="width: 100%;"
+      border
+      fit
+      highlight-current-row
+      style="width: 100%;"
       @sort-change="tableOrder"
     >
       <el-table-column sortable align="center" label="Title" width="250">
         <template slot-scope="scope">
-          <el-link :href="scope.row.wixLink" v-if="scope.row.wixType === 200" target="_blank" class="buttonText"  type="primary" :underline="false">
+          <el-link v-if="scope.row.wixType === 200" :href="scope.row.wixLink" target="_blank" class="buttonText" type="primary" :underline="false">
             <el-popover placement="top-start" trigger="hover" :disabled="scope.row.wixTitle.length <= 10">
-                <div>{{ scope.row.wixTitle }}</div>
-                <span slot="reference" v-if="scope.row.wixTitle.length <= 30">{{scope.row.wixTitle}}</span>
-                <span slot="reference" v-if="scope.row.wixTitle.length > 30">{{scope.row.wixTitle.substr(0, 30) + "..."}}</span>
+              <div>{{ scope.row.wixTitle }}</div>
+              <span v-if="scope.row.wixTitle.length <= 30" slot="reference">{{ scope.row.wixTitle }}</span>
+              <span v-if="scope.row.wixTitle.length > 30" slot="reference">{{ scope.row.wixTitle.substr(0, 30) + "..." }}</span>
             </el-popover>
           </el-link>
-          <el-popover placement="top-start" v-if="scope.row.wixType === 100" trigger="hover" :disabled="scope.row.wixTitle.length <= 10">
+          <el-popover v-if="scope.row.wixType === 100" placement="top-start" trigger="hover" :disabled="scope.row.wixTitle.length <= 10">
             <div>{{ scope.row.wixTitle }}</div>
-            <span slot="reference" v-if="scope.row.wixTitle.length <= 30">{{scope.row.wixTitle}}</span>
-            <span slot="reference" v-if="scope.row.wixTitle.length > 30">{{scope.row.wixTitle.substr(0, 30) + "..."}}</span>
+            <span v-if="scope.row.wixTitle.length <= 30" slot="reference">{{ scope.row.wixTitle }}</span>
+            <span v-if="scope.row.wixTitle.length > 30" slot="reference">{{ scope.row.wixTitle.substr(0, 30) + "..." }}</span>
           </el-popover>
         </template>
       </el-table-column>
@@ -35,37 +40,37 @@
       <el-table-column prop="wixPublishing" label="Publisher" sortable width="180" />
       <el-table-column prop="wixType" label="Source Type" sortable width="180">
         <template slot-scope="scope">
-          {{ scope.row.wixType | wixTypeFilter}}
+          {{ scope.row.wixType | wixTypeFilter }}
         </template>
       </el-table-column>
-      <el-table-column prop="wixReleaseDate" label="Date" sortable width="100" />
-<!--      <el-table-column prop="wixLink" label="Link" sortable width="300">-->
-<!--        <template slot-scope="scope">-->
-<!--          <div v-if="scope.row.wixLink.indexOf('http') != -1">-->
-<!--            <el-link :underline="false" :href="scope.row.wixLink" target="_blank">-->
-<!--              <el-popover placement="top-start" width="300" trigger="hover" :disabled="scope.row.wixLink.length <= 10">-->
-<!--                <div>{{ scope.row.wixLink }}</div>-->
-<!--                <span slot="reference" v-if="scope.row.wixSummary.length <= 30">{{scope.row.wixLink}}</span>-->
-<!--                <span slot="reference" v-if="scope.row.wixSummary.length > 30">{{scope.row.wixLink.substr(0, 30) + "..."}}</span>-->
-<!--              </el-popover>-->
-<!--            </el-link>-->
-<!--          </div>-->
-<!--          <div v-else>-->
-<!--            <el-popover placement="top-start" trigger="hover" :disabled="scope.row.wixLink.length <= 10">-->
-<!--              <div>{{ scope.row.wixLink }}</div>-->
-<!--              <span slot="reference" v-if="scope.row.wixLink.length <= 20">{{scope.row.wixLink}}</span>-->
-<!--              <span slot="reference" v-if="scope.row.wixLink.length > 20">{{scope.row.wixLink.substr(0, 20) + "..."}}</span>-->
-<!--            </el-popover>-->
-<!--          </div>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
+      <el-table-column prop="wixReleaseDate" label="Year" sortable width="100" />
+      <!--      <el-table-column prop="wixLink" label="Link" sortable width="300">-->
+      <!--        <template slot-scope="scope">-->
+      <!--          <div v-if="scope.row.wixLink.indexOf('http') != -1">-->
+      <!--            <el-link :underline="false" :href="scope.row.wixLink" target="_blank">-->
+      <!--              <el-popover placement="top-start" width="300" trigger="hover" :disabled="scope.row.wixLink.length <= 10">-->
+      <!--                <div>{{ scope.row.wixLink }}</div>-->
+      <!--                <span slot="reference" v-if="scope.row.wixSummary.length <= 30">{{scope.row.wixLink}}</span>-->
+      <!--                <span slot="reference" v-if="scope.row.wixSummary.length > 30">{{scope.row.wixLink.substr(0, 30) + "..."}}</span>-->
+      <!--              </el-popover>-->
+      <!--            </el-link>-->
+      <!--          </div>-->
+      <!--          <div v-else>-->
+      <!--            <el-popover placement="top-start" trigger="hover" :disabled="scope.row.wixLink.length <= 10">-->
+      <!--              <div>{{ scope.row.wixLink }}</div>-->
+      <!--              <span slot="reference" v-if="scope.row.wixLink.length <= 20">{{scope.row.wixLink}}</span>-->
+      <!--              <span slot="reference" v-if="scope.row.wixLink.length > 20">{{scope.row.wixLink.substr(0, 20) + "..."}}</span>-->
+      <!--            </el-popover>-->
+      <!--          </div>-->
+      <!--        </template>-->
+      <!--      </el-table-column>-->
 
       <el-table-column sortable="false" align="center" label="Abstract" width="300">
         <template slot-scope="scope">
           <el-popover placement="top-start" trigger="hover" :disabled="scope.row.wixSummary.length <= 10">
             <div>{{ scope.row.wixSummary }}</div>
-            <span slot="reference" v-if="scope.row.wixSummary.length <= 30">{{scope.row.wixSummary}}</span>
-            <span slot="reference" v-if="scope.row.wixSummary.length > 30">{{scope.row.wixSummary.substr(0, 30) + "..."}}</span>
+            <span v-if="scope.row.wixSummary.length <= 30" slot="reference">{{ scope.row.wixSummary }}</span>
+            <span v-if="scope.row.wixSummary.length > 30" slot="reference">{{ scope.row.wixSummary.substr(0, 30) + "..." }}</span>
           </el-popover>
         </template>
       </el-table-column>
@@ -85,12 +90,12 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="Title" prop="wixTitle">
-              <el-input ref="roleName" v-model="temp.wixTitle" maxlength="50" />
+              <el-input ref="roleName" v-model="temp.wixTitle" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="Author" prop="wixAuthor">
-              <el-input ref="roleName" v-model="temp.wixAuthor" maxlength="50" />
+              <el-input ref="roleName" v-model="temp.wixAuthor" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -98,37 +103,39 @@
           <el-col :span="12">
             <el-form-item label="Source Type" prop="wixType">
               <el-radio-group v-model="temp.wixType">
-                <el-radio :label="item.key" v-for="item in wixTypeList">{{item.value}}</el-radio>
+                <el-radio v-for="item in wixTypeList" :label="item.key">{{ item.value }}</el-radio>
               </el-radio-group>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="Editor" prop="wixTypesetting">
-              <el-input ref="roleName" v-model="temp.wixTypesetting" maxlength="50" />
+              <el-input ref="roleName" v-model="temp.wixTypesetting" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
             <el-form-item label="Publisher" prop="wixPublishing">
-              <el-input v-model="temp.wixPublishing" maxlength="255" />
+              <el-input v-model="temp.wixPublishing" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="Date" prop="wixReleaseDate">
-              <el-date-picker v-model="temp.wixReleaseDate" value-format="yyyy-MM-dd" type="date" placeholder="select date" />
+            <el-form-item label="Year" prop="wixReleaseDate">
+              <!--              <el-date-picker v-model="temp.wixReleaseDate" value-format="yyyy-MM-dd" type="date" placeholder="select date" />-->
+              <!--              <el-date-picker v-model="temp.wixReleaseDate" value-format="yyyy" type="date" placeholder="select date" />-->
+              <el-date-picker v-model="temp.wixReleaseDate" type="year" value-format="yyyy" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
             <el-form-item label="Link" prop="wixLink">
-              <el-input v-model="temp.wixLink" maxlength="255" />
+              <el-input v-model="temp.wixLink" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="Abstract" prop="wixSummary">
-              <el-input v-model="temp.wixSummary" maxlength="255" />
+              <el-input v-model="temp.wixSummary" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -149,23 +156,23 @@
 </template>
 
 <script>
-import { wixGet, wixFindList, wixCreate, wixUpdate, wixDelete } from '@/api/wix'
+import { wixFindList, wixCreate, wixUpdate, wixDelete } from '@/api/wix'
 import Pagination from '@/components/Pagination'
 
-const wixTypeMap = [{key:100,value:'Online Sources'}, {key:200,value:'Printed Sources'}]
+const wixTypeMap = [{ key: 100, value: 'Online Sources' }, { key: 200, value: 'Printed Sources' }]
 
 export default {
   name: 'WixFile',
-  components: { Pagination,wixTypeMap },
+  components: { Pagination, wixTypeMap },
   filters: {
     wixTypeFilter(value) {
       var result = ''
       wixTypeMap.forEach(item => {
-        if(item.key === value){
+        if (item.key === value) {
           result = item.value
         }
       })
-      return result;
+      return result
     }
   },
   data() {
@@ -288,7 +295,7 @@ export default {
           this.loadListPager()
         })
       })
-    },
+    }
 
   }
 }

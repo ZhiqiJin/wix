@@ -14,7 +14,7 @@ $(document).ready(function () {
     columns: [
       {
         data: 'wixTitle', render: function (data, type, row) {
-          var text = data.length > 20 ? data.substr(0, 20) + '...' : data
+          var text = data.length > 255 ? data.substr(0, 255) + '...' : data
           if (row.wixLink.indexOf('http') != -1) {
             return '<a href="' + row.wixLink + '" target="view_window" style="color:#409eff;">' + text + '</a>'
           } else {
@@ -22,11 +22,15 @@ $(document).ready(function () {
           }
         }
       },
-      {"data": "wixAuthor"},
-      {"data": "wixTypesetting"},
-      {"data": "wixPublishing"},
+      {"data": "wixTypesetting","width": "200px"},
+      {"data": "wixAuthor","width": "200px"},
       {
-        data: 'wixType', render: function (value, type, row) {
+        data: 'wixPublishing',"width": "200px", render: function (data, type, row) {
+          return data.length > 50 ? data.substr(0, 50) + '...' : data
+        }
+      },
+      {
+        data: 'wixType',"width": "150px", render: function (value, type, row) {
           var result = ''
           wixTypeMap.forEach(item => {
             if(item.key === value){
@@ -36,10 +40,10 @@ $(document).ready(function () {
           return result;
         }
       },
-      {"data": "wixReleaseDate"},
+      {"data": "wixReleaseDate","width": "50px"},
       {
-        data: 'wixSummary', render: function (data, type, row) {
-          return data.length > 30 ? data.substr(0, 30) + '...' : data
+        data: 'wixSummary',"width": "300px", render: function (data, type, row) {
+          return data.length > 50 ? data.substr(0, 50) + '...' : data
         }
       }
     ],
@@ -62,8 +66,8 @@ $(document).ready(function () {
   }
 
   var html =  '  <label><input type="radio" name="wixType" id="wixType-0" value="0" checked="checked"/>ALL</label>\n' +
-              '  <label><input type="radio" name="wixType" id="wixType-100" value="100"/>Online Sources</label>\n' +
-              '  <label><input type="radio" name="wixType" id="wixType-200" value="200"/>Printed Sources</label>\n';
+    '  <label><input type="radio" name="wixType" id="wixType-100" value="100"/>Online Sources</label>\n' +
+    '  <label><input type="radio" name="wixType" id="wixType-200" value="200"/>Printed Sources</label>\n';
   $("div.toolbar").html(html)
 
   $('.toolbar input[type="radio"]').on('click', function(e) {
@@ -90,7 +94,7 @@ $(document).ready(function () {
     $("#wixReleaseDate").html(row.wixReleaseDate ? row.wixReleaseDate: "");
     $("#wixSummary").html(row.wixSummary ? row.wixSummary: "");
     $("#wixContent").html(row.wixContent ? row.wixContent: "");
-    layer.open({type: 1, title: "Data details", shadeClose: true, skin: "layui-layer-rim", area: ["800px", "600px"], content: $("#dialog").html()});
+    layer.open({type: 1, title: "Data details", shadeClose: true, skin: "layui-layer-rim", area: ["1020px", "600px"], content: $("#dialog").html()});
   });
 
   var url = new URL(window.location.href);
@@ -99,6 +103,5 @@ $(document).ready(function () {
   if(wixType != null){
     $("#wixType-" + wixType).attr('checked', 'checked');
   }
-
 });
 

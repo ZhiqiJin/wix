@@ -129,98 +129,98 @@ function setTableBody(rows){
   // }
 
   var html = '<!DOCTYPE html> \n'+
-      '<!-- last update time: ' + new Date().toISOString().slice(0, 20) + '--> \n' +
-      '<html> \n'+
-      '<head> \n'+
-      '  <meta charset="utf-8"> \n'+
-      '  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> \n'+
-      '  <title>wix</title> \n'+
-      '  <meta http-equiv="cache-control" content="no-cache"> \n'+
-      '  <meta http-equiv="expires" content="0"> \n'+
-      '  <meta http-equiv="pragma" content="no-cache"> \n'+
-      '  <link rel="stylesheet" href="static/layui/css/layui.css"> \n'+
-      '  <link rel="stylesheet" type="text/css" href="static/DataTables/datatables.min.css"/> \n'+
-      '  <script src="static/DataTables/jQuery-3.6.0/jquery-3.6.0.js"></script> \n'+
-      '  <script type="text/javascript" src="static/DataTables/datatables.min.js"></script> \n'+
-      '  <style> \n'+
-      '    .pull-left{float:left!important;} \n'+
-      '    .pull-right{float:right!important;} \n'+
-      '    .layui-row label{font-weight: bold;} \n'+
-      '    .toolbar{ display: contents;} \n'+
-      '    #example_filter input {width: 500px;} \n'+
-      '  </style> \n'+
-      '</head> \n'+
-      '<body> \n'+
-      '<table id="example" class="display" style="width:100%"> \n'+
-      '  <thead> \n'+
-      '    <tr> \n'+
-      '      <th>Title</th> \n'+
-      '      <th>Author</th> \n'+
-      '      <th>Editor</th> \n'+
-      '      <th>Publisher</th> \n'+
-      '      <th>Source Type</th> \n'+
-      '      <th>Date</th> \n'+
-      '      <th>Abstract</th> \n'+
-      '    </tr> \n'+
-      '  </thead> \n'+
-      '  <tbody> \n'+
-      '' + body +
-      '  </tbody> \n'+
-      '</table> \n'+
-      '<div class="layui-form" id="dialog" hidden>\n' +
-      '  <div class="layui-row">\n' +
-      '    <div class="layui-col-md6">\n' +
-      '      <label class="layui-form-label" style="width: 120px;" >Title：</label>\n' +
-      '      <div class="layui-form-mid layui-word-aux" id="wixTitle"></div>\n' +
-      '    </div>\n' +
-      '    <div class="layui-col-md6">\n' +
-      '      <label class="layui-form-label" style="width: 120px;" >Author：</label>\n' +
-      '      <div class="layui-form-mid layui-word-aux" id="wixAuthor"></div>\n' +
-      '    </div>\n' +
-      '  </div>\n' +
-      '  <div class="layui-row">\n' +
-      '    <div class="layui-col-md6">\n' +
-      '      <label class="layui-form-label" style="width: 120px;" >Source Type：</label>\n' +
-      '      <div class="layui-form-mid layui-word-aux" id="wixType"></div>\n' +
-      '    </div>\n' +
-      '    <div class="layui-col-md6">\n' +
-      '      <label class="layui-form-label" style="width: 120px;" >Editor：</label>\n' +
-      '      <div class="layui-form-mid layui-word-aux" id="wixTypesetting"></div>\n' +
-      '    </div>\n' +
-      '  </div>\n' +
-      '  <div class="layui-row">\n' +
-      '    <div class="layui-col-md6">\n' +
-      '      <label class="layui-form-label" style="width: 120px;" >Publisher：</label>\n' +
-      '      <div class="layui-form-mid layui-word-aux" id="wixPublishing"></div>\n' +
-      '    </div>\n' +
-      '    <div class="layui-col-md6">\n' +
-      '      <label class="layui-form-label" style="width: 120px;" >Date：</label>\n' +
-      '      <div class="layui-form-mid layui-word-aux" id="wixReleaseDate"></div>\n' +
-      '    </div>\n' +
-      '  </div>\n' +
-      '  <div class="layui-row">\n' +
-      '    <div class="layui-col-md6">\n' +
-      '      <label class="layui-form-label" style="width: 120px;" >Link：</label>\n' +
-      '      <div class="layui-form-mid layui-word-aux" id="wixLink"></div>\n' +
-      '    </div>\n' +
-      '    <div class="layui-col-md6">\n' +
-      '      <label class="layui-form-label" style="width: 120px;" >Abstract：</label>\n' +
-      '      <div class="layui-form-mid layui-word-aux" id="wixSummary"></div>\n' +
-      '    </div>\n' +
-      '  </div>\n' +
-      '  <div class="layui-row">\n' +
-      '    <div class="layui-col-md12">\n' +
-      '      <label class="layui-form-label" style="width: 120px;" >Content：</label>\n' +
-      '      <div class="layui-form-mid layui-word-aux" id="wixContent"></div>\n' +
-      '    </div>\n' +
-      '  </div>\n' +
-      '</div> \n '+
-      '<!-- 引入 layui.js 的 <script> 标签最好放置在 html 末尾 --> \n'+
-      '<script src="static/layui/layui.js"></script> \n'+
-      '<script src="static/index.js"></script> \n'+
-      '<script type="text/javascript">var tableList = '+JSON.stringify(rows)+'</script> \n'+
-      '</body> \n'+
-      '</html> \n';
+    '<!-- last update time: ' + new Date().toISOString().slice(0, 20) + '--> \n' +
+    '<html> \n'+
+    '<head> \n'+
+    '  <meta charset="utf-8"> \n'+
+    '  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> \n'+
+    '  <title>wix</title> \n'+
+    '  <meta http-equiv="cache-control" content="no-cache"> \n'+
+    '  <meta http-equiv="expires" content="0"> \n'+
+    '  <meta http-equiv="pragma" content="no-cache"> \n'+
+    '  <link rel="stylesheet" href="static/layui/css/layui.css"> \n'+
+    '  <link rel="stylesheet" type="text/css" href="static/DataTables/datatables.min.css"/> \n'+
+    '  <script src="static/DataTables/jQuery-3.6.0/jquery-3.6.0.js"></script> \n'+
+    '  <script type="text/javascript" src="static/DataTables/datatables.min.js"></script> \n'+
+    '  <style> \n'+
+    '    .pull-left{float:left!important;} \n'+
+    '    .pull-right{float:right!important;} \n'+
+    '    .layui-row label{font-weight: bold;} \n'+
+    '    .toolbar{display: block;float: left;padding-top: 5px;} \n'+
+    '    #example_filter input {width: 500px;} \n'+
+    '  </style> \n'+
+    '</head> \n'+
+    '<body style="width: 1920px"> \n'+
+    '<table id="example" class="display" style="width:100%"> \n'+
+    '  <thead> \n'+
+    '    <tr> \n'+
+    '      <th>Title</th> \n'+
+    '      <th>Author</th> \n'+
+    '      <th>Editor</th> \n'+
+    '      <th>Publisher</th> \n'+
+    '      <th>Source Type</th> \n'+
+    '      <th>Year</th> \n'+
+    '      <th>Abstract</th> \n'+
+    '    </tr> \n'+
+    '  </thead> \n'+
+    '  <tbody> \n'+
+    '' + body +
+    '  </tbody> \n'+
+    '</table> \n'+
+    '<div class="layui-form" id="dialog" hidden>\n' +
+    '  <div class="layui-row">\n' +
+    '    <div class="layui-col-md6">\n' +
+    '      <label class="layui-form-label" style="width: 120px;" >Title：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixTitle"></div>\n' +
+    '    </div>\n' +
+    '    <div class="layui-col-md6">\n' +
+    '      <label class="layui-form-label" style="width: 120px;" >Author：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixAuthor"></div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <div class="layui-row">\n' +
+    '    <div class="layui-col-md6">\n' +
+    '      <label class="layui-form-label" style="width: 120px;" >Source Type：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixType"></div>\n' +
+    '    </div>\n' +
+    '    <div class="layui-col-md6">\n' +
+    '      <label class="layui-form-label" style="width: 120px;" >Editor：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixTypesetting"></div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <div class="layui-row">\n' +
+    '    <div class="layui-col-md6">\n' +
+    '      <label class="layui-form-label" style="width: 120px;" >Publisher：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixPublishing"></div>\n' +
+    '    </div>\n' +
+    '    <div class="layui-col-md6">\n' +
+    '      <label class="layui-form-label" style="width: 120px;" >Year：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixReleaseDate"></div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <div class="layui-row">\n' +
+    '    <div class="layui-col-md6">\n' +
+    '      <label class="layui-form-label" style="width: 120px;" >Link：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixLink"></div>\n' +
+    '    </div>\n' +
+    '    <div class="layui-col-md6">\n' +
+    '      <label class="layui-form-label" style="width: 120px;" >Abstract：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixSummary"></div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <div class="layui-row">\n' +
+    '    <div class="layui-col-md12">\n' +
+    '      <label class="layui-form-label" style="width: 120px;" >Content：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixContent"></div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</div> \n '+
+    '<!-- 引入 layui.js 的 <script> 标签最好放置在 html 末尾 --> \n'+
+    '<script src="static/layui/layui.js"></script> \n'+
+    '<script src="static/index.js"></script> \n'+
+    '<script type="text/javascript">var tableList = '+JSON.stringify(rows)+'</script> \n'+
+    '</body> \n'+
+    '</html> \n';
 
   fs.writeFileSync("./index.html", html, {'encoding': 'utf8'})
 }
