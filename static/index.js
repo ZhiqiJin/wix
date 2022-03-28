@@ -9,7 +9,7 @@ $(document).ready(function () {
     dom: '<"toolbar">frtip',
     data: tableData,
     createdRow: function (row, data, dataIndex) {
-      $(row).attr('data', JSON.stringify(data).replace(/\"/g, "'"))
+      $(row).attr('row-id', data.id)
     },
     columns: [
       {
@@ -76,7 +76,12 @@ $(document).ready(function () {
 
   //对行双击添加监听事件
   $("#example tbody").on("dblclick", "tr", function () {
-    var row = JSON.parse($(this).attr("data").replace(/\'/g,"\""));
+    var row = {};
+    tableList.forEach(item => {
+      if ($(this).attr("row-id") === item.id) {
+        row = item
+      }
+    })
 
     var wixType = ''
     wixTypeMap.forEach(item => {

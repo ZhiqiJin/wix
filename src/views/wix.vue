@@ -155,12 +155,13 @@ export default {
     }
   },
   data() {
+    // 特殊字符校验
     const specialCharacters = (rule, value, callback) => {
-      const pattern = new RegExp("[`\"\"<>''”“‘’']")
-      if (pattern.test(value)) {
-        callback('Special characters are not supported("\'<>)')
-      }
-      callback()
+      // const pattern = new RegExp("[`\"\"<>''”“‘’']")
+      // if (pattern.test(value)) {
+      //   callback('Special characters are not supported("\'<>)')
+      // }
+      // callback()
     }
     const notNull = (rule, value, callback) => {
       if (!value) {

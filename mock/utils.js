@@ -169,10 +169,12 @@ function setTableBody(rows){
     '</table> \n'+
     '<div class="layui-form" id="dialog" hidden>\n' +
     '  <div class="layui-row">\n' +
-    '    <div class="layui-col-md12">\n' +
+    '    <div>\n' +
     '      <label class="layui-form-label" style="width: 100px;" >Title：</label>\n' +
-    '      <div class="layui-form-mid layui-word-aux" id="wixTitle"></div>\n' +
     '    </div>\n' +
+    '    <div class="layui-form-mid layui-word-aux layui-col-md10" id="wixTitle"></div>\n' +
+    '  </div>\n' +
+    '  <div class="layui-row">\n' +
     '    <div class="layui-col-md12">\n' +
     '      <label class="layui-form-label" style="width: 100px;" >Author：</label>\n' +
     '      <div class="layui-form-mid layui-word-aux" id="wixAuthor"></div>\n' +
