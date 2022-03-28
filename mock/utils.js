@@ -157,7 +157,7 @@ function setTableBody(rows){
     '      <th>Title</th> \n'+
     '      <th>Author</th> \n'+
     '      <th>Editor</th> \n'+
-    '      <th>Publisher</th> \n'+
+    '      <th>Publication</th> \n'+
     '      <th>Source Type</th> \n'+
     '      <th>Year</th> \n'+
     '      <th>Abstract</th> \n'+
@@ -169,50 +169,50 @@ function setTableBody(rows){
     '</table> \n'+
     '<div class="layui-form" id="dialog" hidden>\n' +
     '  <div class="layui-row">\n' +
-    '    <div class="layui-col-md6">\n' +
-    '      <label class="layui-form-label" style="width: 120px;" >Title：</label>\n' +
+    '    <div class="layui-col-md12">\n' +
+    '      <label class="layui-form-label" style="width: 100px;" >Title：</label>\n' +
     '      <div class="layui-form-mid layui-word-aux" id="wixTitle"></div>\n' +
     '    </div>\n' +
-    '    <div class="layui-col-md6">\n' +
-    '      <label class="layui-form-label" style="width: 120px;" >Author：</label>\n' +
+    '    <div class="layui-col-md12">\n' +
+    '      <label class="layui-form-label" style="width: 100px;" >Author：</label>\n' +
     '      <div class="layui-form-mid layui-word-aux" id="wixAuthor"></div>\n' +
     '    </div>\n' +
     '  </div>\n' +
     '  <div class="layui-row">\n' +
     '    <div class="layui-col-md6">\n' +
-    '      <label class="layui-form-label" style="width: 120px;" >Source Type：</label>\n' +
+    '      <label class="layui-form-label" style="width: 100px;" >Source Type：</label>\n' +
     '      <div class="layui-form-mid layui-word-aux" id="wixType"></div>\n' +
     '    </div>\n' +
     '    <div class="layui-col-md6">\n' +
-    '      <label class="layui-form-label" style="width: 120px;" >Editor：</label>\n' +
+    '      <label class="layui-form-label" style="width: 100px;" >Year：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixReleaseDate"></div>\n' +
+    '    </div>\n' +
+    '    <div class="layui-col-md12">\n' +
+    '      <label class="layui-form-label" style="width: 100px;" >Editor：</label>\n' +
     '      <div class="layui-form-mid layui-word-aux" id="wixTypesetting"></div>\n' +
     '    </div>\n' +
     '  </div>\n' +
     '  <div class="layui-row">\n' +
-    '    <div class="layui-col-md6">\n' +
-    '      <label class="layui-form-label" style="width: 120px;" >Publisher：</label>\n' +
+    '    <div class="layui-col-md12">\n' +
+    '      <label class="layui-form-label" style="width: 100px;" >Publication：</label>\n' +
     '      <div class="layui-form-mid layui-word-aux" id="wixPublishing"></div>\n' +
-    '    </div>\n' +
-    '    <div class="layui-col-md6">\n' +
-    '      <label class="layui-form-label" style="width: 120px;" >Year：</label>\n' +
-    '      <div class="layui-form-mid layui-word-aux" id="wixReleaseDate"></div>\n' +
-    '    </div>\n' +
-    '  </div>\n' +
-    '  <div class="layui-row">\n' +
-    '    <div class="layui-col-md6">\n' +
-    '      <label class="layui-form-label" style="width: 120px;" >Link：</label>\n' +
-    '      <div class="layui-form-mid layui-word-aux" id="wixLink"></div>\n' +
-    '    </div>\n' +
-    '    <div class="layui-col-md6">\n' +
-    '      <label class="layui-form-label" style="width: 120px;" >Abstract：</label>\n' +
-    '      <div class="layui-form-mid layui-word-aux" id="wixSummary"></div>\n' +
     '    </div>\n' +
     '  </div>\n' +
     '  <div class="layui-row">\n' +
     '    <div class="layui-col-md12">\n' +
-    '      <label class="layui-form-label" style="width: 120px;" >Content：</label>\n' +
-    '      <div class="layui-form-mid layui-word-aux" id="wixContent"></div>\n' +
+    '      <label class="layui-form-label" style="width: 100px;" >Link：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixLink"></div>\n' +
     '    </div>\n' +
+    '    <div class="layui-col-md12">\n' +
+    '      <label class="layui-form-label" style="width: 100px;" >Abstract：</label>\n' +
+    '      <div class="layui-form-mid layui-word-aux" id="wixSummary"></div>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '  <div class="layui-row">\n' +
+    '    <div>\n' +
+    '      <label class="layui-form-label" style="width: 100px;" >Content：</label>\n' +
+    '    </div>\n' +
+    '    <div class="layui-form-mid layui-word-aux layui-col-md10" id="wixContent"></div>\n' +
     '  </div>\n' +
     '</div> \n '+
     '<!-- 引入 layui.js 的 <script> 标签最好放置在 html 末尾 --> \n'+

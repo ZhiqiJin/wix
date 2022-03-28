@@ -37,34 +37,13 @@
 
       <el-table-column prop="wixAuthor" label="Author" sortable width="180" />
       <el-table-column prop="wixTypesetting" label="Editor" sortable width="180" />
-      <el-table-column prop="wixPublishing" label="Publisher" sortable width="180" />
+      <el-table-column prop="wixPublishing" label="Publication" sortable width="180" />
       <el-table-column prop="wixType" label="Source Type" sortable width="180">
         <template slot-scope="scope">
           {{ scope.row.wixType | wixTypeFilter }}
         </template>
       </el-table-column>
       <el-table-column prop="wixReleaseDate" label="Year" sortable width="100" />
-      <!--      <el-table-column prop="wixLink" label="Link" sortable width="300">-->
-      <!--        <template slot-scope="scope">-->
-      <!--          <div v-if="scope.row.wixLink.indexOf('http') != -1">-->
-      <!--            <el-link :underline="false" :href="scope.row.wixLink" target="_blank">-->
-      <!--              <el-popover placement="top-start" width="300" trigger="hover" :disabled="scope.row.wixLink.length <= 10">-->
-      <!--                <div>{{ scope.row.wixLink }}</div>-->
-      <!--                <span slot="reference" v-if="scope.row.wixSummary.length <= 30">{{scope.row.wixLink}}</span>-->
-      <!--                <span slot="reference" v-if="scope.row.wixSummary.length > 30">{{scope.row.wixLink.substr(0, 30) + "..."}}</span>-->
-      <!--              </el-popover>-->
-      <!--            </el-link>-->
-      <!--          </div>-->
-      <!--          <div v-else>-->
-      <!--            <el-popover placement="top-start" trigger="hover" :disabled="scope.row.wixLink.length <= 10">-->
-      <!--              <div>{{ scope.row.wixLink }}</div>-->
-      <!--              <span slot="reference" v-if="scope.row.wixLink.length <= 20">{{scope.row.wixLink}}</span>-->
-      <!--              <span slot="reference" v-if="scope.row.wixLink.length > 20">{{scope.row.wixLink.substr(0, 20) + "..."}}</span>-->
-      <!--            </el-popover>-->
-      <!--          </div>-->
-      <!--        </template>-->
-      <!--      </el-table-column>-->
-
       <el-table-column sortable="false" align="center" label="Abstract" width="300">
         <template slot-scope="scope">
           <el-popover placement="top-start" trigger="hover" :disabled="scope.row.wixSummary.length <= 10">
@@ -88,14 +67,14 @@
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="right" label-width="150px">
         <el-row>
-          <el-col :span="12">
+          <el-col :span="24">
             <el-form-item label="Title" prop="wixTitle">
-              <el-input ref="roleName" v-model="temp.wixTitle" />
+              <el-input ref="wixTitle" v-model="temp.wixTitle" />
             </el-form-item>
           </el-col>
-          <el-col :span="12">
+          <el-col :span="24">
             <el-form-item label="Author" prop="wixAuthor">
-              <el-input ref="roleName" v-model="temp.wixAuthor" />
+              <el-input ref="wixAuthor" v-model="temp.wixAuthor" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -108,41 +87,41 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="Editor" prop="wixTypesetting">
-              <el-input ref="roleName" v-model="temp.wixTypesetting" />
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="12">
-            <el-form-item label="Publisher" prop="wixPublishing">
-              <el-input v-model="temp.wixPublishing" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
             <el-form-item label="Year" prop="wixReleaseDate">
               <!--              <el-date-picker v-model="temp.wixReleaseDate" value-format="yyyy-MM-dd" type="date" placeholder="select date" />-->
               <!--              <el-date-picker v-model="temp.wixReleaseDate" value-format="yyyy" type="date" placeholder="select date" />-->
               <el-date-picker v-model="temp.wixReleaseDate" type="year" value-format="yyyy" />
             </el-form-item>
           </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="12">
-            <el-form-item label="Link" prop="wixLink">
-              <el-input v-model="temp.wixLink" />
+          <el-col :span="24">
+            <el-form-item label="Editor" prop="wixTypesetting">
+              <el-input ref="wixTypesetting" v-model="temp.wixTypesetting" />
             </el-form-item>
           </el-col>
-          <el-col :span="12">
+        </el-row>
+        <el-row>
+          <el-col :span="24">
+            <el-form-item label="Publication" prop="wixPublishing">
+              <el-input ref="wixPublishing" v-model="temp.wixPublishing" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="24">
+            <el-form-item label="Link" prop="wixLink">
+              <el-input ref="wixLink" v-model="temp.wixLink" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
             <el-form-item label="Abstract" prop="wixSummary">
-              <el-input v-model="temp.wixSummary" />
+              <el-input ref="wixSummary" v-model="temp.wixSummary" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="24">
             <el-form-item label="Content" prop="wixContent">
-              <el-input v-model="temp.wixContent" type="textarea" />
+              <el-input ref="wixContent" v-model="temp.wixContent" type="textarea" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -176,6 +155,21 @@ export default {
     }
   },
   data() {
+    const specialCharacters = (rule, value, callback) => {
+      const pattern = new RegExp("[`\"\"<>''”“‘’']")
+      if (pattern.test(value)) {
+        callback('Special characters are not supported("\'<>)')
+      }
+    }
+    const notNull = (rule, value, callback) => {
+      if (!value) {
+        callback('Can not be empty')
+      }
+    }
+    const notNullAndSpecialCharacters = (rule, value, callback) => {
+      notNull(rule, value, callback)
+      specialCharacters(rule, value, callback)
+    }
     return {
       tableKey: 0,
       list: [],
@@ -196,8 +190,12 @@ export default {
         create: 'Add'
       },
       rules: {
-        wixTitle: [{ required: true, message: 'The title can not be blank', trigger: 'blur' }],
-        wixAuthor: [{ required: true, message: 'Author cannot be empty', trigger: 'blur' }]
+        wixTitle: [{ required: true, trigger: 'blur', validator: notNullAndSpecialCharacters}],
+        wixAuthor: [{ required: true, trigger: 'blur', validator: notNullAndSpecialCharacters}],
+        wixTypesetting: [{ validator: specialCharacters }],
+        wixPublishing: [{ validator: specialCharacters }],
+        wixSummary: [{ validator: specialCharacters }],
+        wixContent: [{ validator: specialCharacters }]
       },
       temp: {
         id: undefined,
@@ -261,19 +259,23 @@ export default {
       this.dialogFormVisible = true
     },
     formSave() {
-      if (this.temp.id) {
-        wixUpdate(this.temp).then(res => {
-          this.$message({ message: 'Successful operation', type: 'success' })
-          this.dialogFormVisible = false
-          this.loadListPager()
-        })
-      } else {
-        wixCreate(this.temp).then(res => {
-          this.$message({ message: 'Successful operation', type: 'success' })
-          this.dialogFormVisible = false
-          this.loadListPager()
-        })
-      }
+      this.$refs['dataForm'].validate((valid) => {
+        if (valid) {
+          if (this.temp.id) {
+            wixUpdate(this.temp).then(res => {
+              this.$message({ message: 'Successful operation', type: 'success' })
+              this.dialogFormVisible = false
+              this.loadListPager()
+            })
+          } else {
+            wixCreate(this.temp).then(res => {
+              this.$message({ message: 'Successful operation', type: 'success' })
+              this.dialogFormVisible = false
+              this.loadListPager()
+            })
+          }
+        }
+      })
     },
     handleUpdate(row) {
       this.resetTemp()
