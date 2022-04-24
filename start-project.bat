@@ -1,1 +1,1 @@
-git pull && node -v && npm -v && npm install --registry=https://registry.npm.taobao.org &&npm run dev
+git pull && node -v && npm -v && npm install && npm run dev
