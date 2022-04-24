@@ -22,8 +22,8 @@ $(document).ready(function () {
           }
         }
       },
-      {"data": "wixTypesetting","width": "200px"},
       {"data": "wixAuthor","width": "200px"},
+      {"data": "wixTypesetting","width": "200px"},
       {
         data: 'wixPublishing',"width": "200px", render: function (data, type, row) {
           return data.length > 50 ? data.substr(0, 50) + '...' : data
