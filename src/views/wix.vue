@@ -161,7 +161,7 @@ export default {
       // if (pattern.test(value)) {
       //   callback('Special characters are not supported("\'<>)')
       // }
-      callback()
+       callback()
     }
     const notNull = (rule, value, callback) => {
       if (!value) {
